@@ -13,15 +13,15 @@ A learner's submitted ask for a Refund on one Purchase, with their reason. It st
 _Avoid_: Reversal request, Pending Chargeback, Cancel request
 
 **Approved**:
-The outcome of a Refund Request that an Admin has accepted. The learner gets the Refund Amount back.
+The outcome of a Refund Request that an Admin has accepted. The learner gets the Refund Amount back and loses Course Access at that moment, without waiting for the money to move. Their Progress is kept, and any unclaimed team seats from that Purchase stop working. The learner gets an email for either outcome.
 _Avoid_: Processed, Completed, Accepted
 
 **Declined**:
-The outcome of a Refund Request that an Admin has refused. The learner gets nothing back.
+The outcome of a Refund Request that an Admin has refused. The learner gets nothing back and keeps Course Access.
 _Avoid_: Rejected, Denied
 
 **Refund Amount**:
-What the learner actually paid for the Purchase, after any purchasing-power discount or coupon. Never the course's list price. The email and the screen show the same number.
+What the learner actually paid for the Purchase, after any purchasing-power discount or coupon. Never the course's list price. The email, the learner's screen and the Admin's screen show the same number.
 _Avoid_: Price, Course price
 
 **Refund Eligibility**:
@@ -35,6 +35,14 @@ _Avoid_: Cancel window, Cancellation period
 **Admin**:
 The only role that decides a Refund Request. Learners see this as "our team".
 _Avoid_: Support, Staff, Instructor (for refund decisions)
+
+**Course Access**:
+A learner's right to open a course's lessons after buying it. Approving a Refund Request ends it.
+_Avoid_: Enrollment (for the right itself), Subscription
+
+**Progress**:
+What a learner has done in a course: lessons completed, quiz attempts and time watched. It survives an Approved Refund Request, so a learner who buys the course again picks up where they stopped.
+_Avoid_: History, Completion (alone)
 
 **Pending**:
 The state of a Refund Request that no one on the team has decided yet. Screens show it as a "Pending" tag on the Refund Request.
