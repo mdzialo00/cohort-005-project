@@ -37,5 +37,5 @@ The only role that decides a Refund Request. Learners see this as "our team".
 _Avoid_: Support, Staff, Instructor (for refund decisions)
 
 **Pending**:
-The state of a Refund Request that no one on the team has decided yet. Screens say "Pending refund request".
+The state of a Refund Request that no one on the team has decided yet. Screens show it as a "Pending" tag on the Refund Request.
 _Avoid_: Open, Requested, Waiting on us

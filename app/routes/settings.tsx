@@ -215,7 +215,7 @@ export default function Settings({ loaderData }: Route.ComponentProps) {
             <h2 className="text-lg font-semibold">Pending refund requests</h2>
             <p className="text-sm text-muted-foreground">
               {pendingRefundRequests.length === 1
-                ? "One refundRequest is waiting on us."
+                ? "One refund request is waiting on our team."
                 : `${pendingRefundRequests.length} refund requests are waiting on our team.`}
             </p>
           </CardHeader>
@@ -230,7 +230,7 @@ export default function Settings({ loaderData }: Route.ComponentProps) {
                     {refundRequest.courseTitle}
                   </Link>
                   <span className="shrink-0 rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
-                    Pending refund request
+                    Pending
                   </span>
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground">
