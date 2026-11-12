@@ -3,6 +3,7 @@ import type { Route } from "./+types/layout.app";
 import { Sidebar } from "~/components/sidebar";
 import { DevUI } from "~/components/dev-ui";
 import { Toaster } from "sonner";
+import { NotificationPrototype } from "~/components/notification-prototype";
 import { getCurrentUserId, getDevCountry } from "~/lib/session";
 import { getCountryTierInfo, COUNTRIES } from "~/lib/ppp";
 import { eq, and, or, sql, desc } from "drizzle-orm";
@@ -228,23 +229,32 @@ export default function AppLayout({ loaderData }: Route.ComponentProps) {
   } = loaderData;
 
   return (
-    <div className="flex h-screen overflow-hidden">
-      <Sidebar
-        currentUser={currentUser}
-        recentCourses={recentCourses}
-        isTeamAdmin={userIsTeamAdmin}
-      />
-      <main className="flex-1 overflow-y-auto">
-        <Outlet />
-      </main>
-      <DevUI
-        users={users}
-        currentUser={currentUser}
-        devCountry={devCountry}
-        countryTierInfo={countryTierInfo}
-        countries={countries}
-      />
-      <Toaster position="bottom-right" richColors closeButton />
-    </div>
+    <NotificationPrototype
+      role={currentUser?.role ?? null}
+      renderLayout={({ headerAction, extraNav, topBar, overlay, pageOverride }) => (
+        <div className="flex h-screen flex-col overflow-hidden md:flex-row">
+          {topBar}
+          <Sidebar
+            currentUser={currentUser}
+            recentCourses={recentCourses}
+            isTeamAdmin={userIsTeamAdmin}
+            headerAction={headerAction}
+            extraNav={extraNav}
+          />
+          <main className="flex-1 overflow-y-auto">
+            {pageOverride ?? <Outlet />}
+          </main>
+          {overlay}
+          <DevUI
+            users={users}
+            currentUser={currentUser}
+            devCountry={devCountry}
+            countryTierInfo={countryTierInfo}
+            countries={countries}
+          />
+          <Toaster position="bottom-right" richColors closeButton />
+        </div>
+      )}
+    />
   );
 }

@@ -41,6 +41,9 @@ interface SidebarProps {
   currentUser: CurrentUser | null;
   recentCourses?: RecentCourse[];
   isTeamAdmin?: boolean;
+  // PROTOTYPE slots (notification feed)
+  headerAction?: React.ReactNode;
+  extraNav?: React.ReactNode;
 }
 
 interface NavItem {
@@ -117,6 +120,8 @@ export function Sidebar({
   currentUser,
   recentCourses = [],
   isTeamAdmin = false,
+  headerAction,
+  extraNav,
 }: SidebarProps) {
   const currentUserRole = currentUser?.role ?? null;
   const [isDark, setIsDark] = useState(false);
@@ -135,14 +140,16 @@ export function Sidebar({
   }
 
   return (
-    <aside className="flex h-screen w-56 shrink-0 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground">
+    <aside className="hidden h-screen w-56 md:flex shrink-0 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground">
       <div className="flex h-14 items-center border-b border-sidebar-border px-4">
         <NavLink to="/" className="text-lg font-bold tracking-tight">
           Cadence
         </NavLink>
+        {headerAction}
       </div>
 
       <nav className="flex-1 space-y-1 p-3">
+        {extraNav}
         {navItems
           .filter((item) => isVisible(item, currentUserRole))
           .map((item) => (
